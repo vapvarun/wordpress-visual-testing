@@ -1,0 +1,41 @@
+{
+  "name": "wordpress-visual-testing",
+  "version": "1.0.0",
+  "description": "Automated visual regression testing for WordPress plugins",
+  "main": "index.js",
+  "scripts": {
+    "test:buddypress:before": "node scripts/run-test.js buddypress before",
+    "test:buddypress:after": "node scripts/run-test.js buddypress after",
+    "test:woocommerce:before": "node scripts/run-test.js woocommerce before",
+    "test:woocommerce:after": "node scripts/run-test.js woocommerce after",
+    "test:learndash:before": "node scripts/run-test.js learndash before",
+    "test:learndash:after": "node scripts/run-test.js learndash after",
+    "test:custom:before": "node scripts/run-test.js custom before",
+    "test:custom:after": "node scripts/run-test.js custom after",
+    "compare": "node scripts/compare.js",
+    "report": "node scripts/open-report.js",
+    "health-check": "node scripts/health-check.js",
+    "clean": "node scripts/cleanup.js",
+    "full:buddypress": "npm run test:buddypress:before && npm run test:buddypress:after && npm run compare",
+    "full:woocommerce": "npm run test:woocommerce:before && npm run test:woocommerce:after && npm run compare",
+    "full:learndash": "npm run test:learndash:before && npm run test:learndash:after && npm run compare",
+    "quick:buddypress": "npm run test:buddypress:before && echo '\n🎨 Make your CSS changes now, then press Enter to continue...' && read dummy && npm run test:buddypress:after && npm run compare && npm run report",
+    "quick:woocommerce": "npm run test:woocommerce:before && echo '\n🎨 Make your CSS changes now, then press Enter to continue...' && read dummy && npm run test:woocommerce:after && npm run compare && npm run report",
+    "help": "node scripts/help.js"
+  },
+  "keywords": ["wordpress", "visual-testing", "regression", "buddypress", "woocommerce", "learndash"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^21.0.0",
+    "pixelmatch": "^5.3.0",
+    "pngjs": "^7.0.0",
+    "fs-extra": "^11.0.0",
+    "chalk": "^4.1.2",
+    "cli-progress": "^3.12.0",
+    "node-fetch": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
